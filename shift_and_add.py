@@ -17,6 +17,11 @@ CENTROID = 0
 PEAK = 1
 
 
+# this always looks a little obscure to me
+def pad_filenumber(num):
+    return "{:05d}".format(num)
+
+
 def showdata_nb(data):
     global global_fig, global_ax
 
@@ -135,7 +140,7 @@ def writefits(data, fname):
 def get_filenames_range(filename_base, filename_ext, start_file_number, end_file_number):
     file_names = []
     for iii in range(start_file_number,end_file_number):
-        file_number_string = "{:05d}".format(iii)
+        file_number_string = pad_filenumber(iii)
         file_names.append(filename_base + file_number_string + filename_ext)
 
     return file_names
@@ -144,7 +149,7 @@ def get_filenames_range(filename_base, filename_ext, start_file_number, end_file
 def get_filenames_curated(filename_base, filename_ext, filenums):
     file_names = []
     for nnn in filenums:
-        fn = "{:05d}".format(nnn)
+        fn = pad_filenumber(nnn)
         file_names.append(filename_base + fn + filename_ext)
 
     return file_names
